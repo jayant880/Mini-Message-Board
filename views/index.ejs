@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Message-Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .new-message {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+        }
+
+        .new-message:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Messages</h1>
+    <% if (messages && messages.length) { %>
+        <ul>
+            <% messages.forEach((message)=> { %>
+                <li>
+                    <span class="user">
+                        <%= message.user %>
+                    </span>:
+                    <%= message.text %>
+                        <span class="date">(<%= message.added.toLocaleString() %>)</span>
+                </li>
+                <% }); %>
+        </ul>
+        <% } else { %>
+            <p>No messages yet!</p>
+            <% } %>
+                <a href="/new" class="new-message">Add New Message</a>
+</body>
+
+</html>
